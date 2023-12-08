@@ -1,0 +1,20 @@
+blocks:
+  - netmask: 255.255.255.0
+    gateway: 10.68.87.1
+    ips:
+    - ip: 10.68.87.3
+      hostname: admin-host1
+    - ip: 10.68.87.4
+      hostname: admin-host2
+    - ip: 10.68.87.5
+      hostname: admin-host3
+    - ip: 10.68.87.6
+      hostname: admin-host4
+    - ip: 10.68.87.7
+      hostname: admin-host5
+    - ip: 10.68.87.8
+      hostname: admin-host6
+    - ip: 10.68.87.9
+      hostname: admin-host7
+    - ip: 10.68.87.10
+      hostname: admin-host8

@@ -1,0 +1,33 @@
+gcp:
+  componentAccessServiceAccountKeyPath: "my-key-folder/component-access-key.json"
+vCenter:
+  credentials:
+    address: "vcenter7dc.pgbank.com.vn"
+    username: "gkepoc@vsphere.local"
+    password: ""
+  datacenter: "DC Datacenter"
+  datastore: "SAN_NIMBLE_VMW_03"
+  cluster: "DC1 Cluster"
+  network: "DSwitch DC"
+  folder: "GKE POC"
+  resourcePool: "Google GKE POC"
+  caCertPath: "/usr/local/google/home/me/certs/vcenter-ca-cert.pem"
+# proxyUrl: ""
+adminWorkstation:
+  name: gke-admin-ws
+  cpus: 4
+  memoryMB: 8192
+  diskGB: 50
+  dataDiskName: gke-on-prem-admin-workstation-data-disk/gke-admin-ws-data-disk.vmdk
+  dataDiskMB: 512
+  network:
+    ipAllocationMode: "static"
+    hostConfig:
+      ip: "10.68.87.2"
+      gateway: "10.68.87.1"
+      netmask: "255.255.255.0"
+      dns:
+      - "10.68.8.8"
+      - "10.68.4.4"
+  # proxyUrl: ""
+  ntpServer: time1.pgbank.com.vn

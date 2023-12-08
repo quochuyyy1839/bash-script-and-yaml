@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: AdminCluster
+name: "admin-cluster"
+bundlePath: "/var/lib/gke/bundles/gke-onprem-vsphere-1.11.0-gke.543-full.tgz"
+vCenter:
+  credentials:
+    address: "vcenter7dc.pgbank.com.vn"
+    username: "gkepoc@vsphere.local"
+    password: ""
+  datacenter: "DC Datacenter"
+  datastore: "SAN_NIMBLE_VMW_03"
+  cluster: "DC1 Cluster"
+  network: "DSwitch DC"
+  folder: "GKE POC"
+  resourcePool: "Google GKE POC"
+  caCertPath: "/usr/local/google/home/me/certs/vcenter-ca-cert.pem"
+network:
+  hostConfig:
+    dnsServers:
+    - "10.68.8.8"
+    - "10.68.4.4"
+    ntpServers:
+    - "time1.pgbank.com.vn"
+  ipMode:
+    type: "static"
+    ipBlockFilePath: "admin-cluster-ip.yaml"
+  serviceCIDR: 192.168.64.0/22
+  podCIDR: 192.168.0.0/18
+  vCenter:
+    networkName: "vcenter7dc-net"
+loadBalancer:
+  vips:
+    controlPlaneVIP: "10.68.87.11"
+    addonsVIP: "10.68.87.12"
+  kind: MetalLB
+antiAffinityGroups:
+  enabled: true
+adminMaster:
+  cpus: 2
+  memoryMB: 4096
+  replicas: 3
+addonNode:
+  autoResize:
+    enabled: true
+# proxy:
+#   url: ""
+#   noProxy: ""
+componentAccessServiceAccountKeyPath: "sa-key.json"
+gkeConnect:
+  projectID: "my-project-123"
+  registerServiceAccountKeyPath: "connect-register-sa.json"
+stackdriver:
+  projectID: "my-project-123"
+  clusterLocation: "asia-souteast1"
+  enableVPC: false
+  serviceAccountKeyPath: "logging-monitoring-key.json"
+  disableVsphereResourceMetrics: false
+cloudAuditLogging:
+  projectID: "my-project-123"
+  clusterLocation: "asia-souteast1"
+  serviceAccountKeyPath: "logging-monitoring-key.json"
+clusterBackup:
+  datastore: "admin-cluster-datastore"
+autoRepair:
+  enabled: true
+osImageType: "ubuntu_containerd"
