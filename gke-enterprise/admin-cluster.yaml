@@ -55,10 +55,6 @@ stackdriver:
   enableVPC: false
   serviceAccountKeyPath: "logging-monitoring-key.json"
   disableVsphereResourceMetrics: false
-cloudAuditLogging:
-  projectID: "my-project-123"
-  clusterLocation: "asia-souteast1"
-  serviceAccountKeyPath: "logging-monitoring-key.json"
 clusterBackup:
   datastore: "admin-cluster-datastore"
 autoRepair:

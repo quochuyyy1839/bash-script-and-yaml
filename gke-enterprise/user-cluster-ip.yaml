@@ -1,0 +1,24 @@
+blocks:
+  - netmask: 255.255.255.0
+    gateway: 10.68.87.1
+    ips:
+    - ip: 10.68.87.60
+      hostname: worker01-vm-0
+    - ip: 10.68.87.61
+      hostname: worker01-vm-1
+    - ip: 10.68.87.62
+      hostname: worker01-vm-2
+    - ip: 10.68.87.63
+      hostname: worker01-vm-3
+    - ip: 10.68.87.64
+      hostname: worker01-vm-4
+    - ip: 10.68.87.65
+      hostname: worker01-vm-5
+    - ip: 10.68.87.66
+      hostname: worker01-vm-6
+    - ip: 10.68.87.67
+      hostname: worker01-vm-7
+    - ip: 10.68.87.68
+      hostname: worker01-vm-8
+    - ip: 10.68.87.69
+      hostname: worker01-vm-9
