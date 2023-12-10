@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: UserCluster
+name: "user-2-cluster"
+gkeOnPremVersion: 1.16.3-gke.45
+enableControlplaneV2: true
+enableDataplaneV2: true
+network:
+  hostConfig:
+    dnsServers:
+    - "10.68.8.8"
+    - "10.68.4.4"
+    ntpServers:
+    - "time1.pgbank.com.vn"
+  ipMode:
+    type: "static"
+    ipBlockFilePath: "user-2-cluster-ip.yaml"
+  serviceCIDR: 192.168.64.0/22
+  podCIDR: 192.168.0.0/18
+  controlPlaneIPBlock:
+    netmask: "255.255.255.0"
+    gateway: "10.68.87.1"
+    ips:
+    - ip: "10.68.87.77"
+      hostname: "cp2-vm-1"
+    - ip: "10.68.87.78"
+      hostname: "cp2-vm-2"
+    - ip: "10.68.87.79"
+      hostname: "cp2-vm-3"
+loadBalancer:
+  vips:
+    controlPlaneVIP: "10.68.87.50"
+    ingressVIP: "10.68.87.51"
+  kind: MetalLB
+  metalLB:
+    addressPools:
+    - name: "address-pool"
+      addresses:
+      - "10.68.87.81-10.68.87.89"
+masterNode:
+  cpus: 3
+  memoryMB: 5120
+  replicas: 3
+nodePools:
+- name: "worker-node-pool"
+  cpus: 4
+  memoryMB: 8192
+  replicas: 3
+  bootDiskSizeGB: 40
+  enableLoadBalancer: true
+  # autoscaling:
+  #   minReplicas: 3
+  #   maxReplicas: 5
+antiAffinityGroups:
+  enabled: true
+gkeConnect:
+  projectID: "my-project-123"
+  registerServiceAccountKeyPath: "connect-register-sa.json"
+stackdriver:
+  projectID: "my-project-123"
+  clusterLocation: "asia-southeast1"
+  enableVPC: false
+  serviceAccountKeyPath: "logging-monitoring-key.json"
+autoRepair:
+  enabled: true
