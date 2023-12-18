@@ -1,0 +1,42 @@
+# cat <<EOF > /tmp/gateway-rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gateway-impersonate
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - huynguyen@cloud-ace.com
+  resources:
+  - users
+  verbs:
+  - impersonate
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gateway-impersonate
+roleRef:
+  kind: ClusterRole
+  name: gateway-impersonate
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: connect-agent-sa
+  namespace: gke-connect
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gateway-cluster-admin
+subjects:
+- kind: User
+  name: huynguyen@cloud-ace.com
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+# EOF
+# # Apply policies to the cluster.
+# kubectl apply --kubeconfig=KUBECONFIG_PATH  -f /tmp/gateway-rbac.yaml

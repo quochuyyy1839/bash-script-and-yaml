@@ -5,5 +5,5 @@ metadata:
 spec:
   domains:
     - quochuynguyen.tech
-    - grafana.quochuynguyen.tech
-    - argocd.quochuynguyen.tech
+    # - grafana.quochuynguyen.tech
+    # - argocd.quochuynguyen.tech
