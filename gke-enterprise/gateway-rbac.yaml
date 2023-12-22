@@ -8,6 +8,13 @@ rules:
   - ""
   resourceNames:
   - huynguyen@cloud-ace.com
+  - namtran@cloud-ace.com
+  - nhatnam805@gmail.com
+  - hoangth7@gmail.com
+  - trungnh2502@gmail.com
+  - luongtuyen@gmail.com
+  - dipi.hoang@gmail.com
+  - tvliem@gmail.com
   resources:
   - users
   verbs:
@@ -33,6 +40,20 @@ metadata:
 subjects:
 - kind: User
   name: huynguyen@cloud-ace.com
+- kind: User
+  name: namtran@cloud-ace.com
+- kind: User
+  name: nhatnam805@gmail.com
+- kind: User
+  name: hoangth7@gmail.com
+- kind: User
+  name: trungnh2502@gmail.com
+- kind: User
+  name: luongtuyen@gmail.com
+- kind: User
+  name: dipi.hoang@gmail.com
+- kind: User
+  name: tvliem@gmail.com
 roleRef:
   kind: ClusterRole
   name: cluster-admin
